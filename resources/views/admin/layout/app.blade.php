@@ -46,11 +46,11 @@
 							</a>
 							<div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
 								<a class="dropdown-item" href="#">
-									
+
 									<a class="dropdown-item" href="{{ route('logout') }}"
 										onclick="event.preventDefault();
 																	document.getElementById('logout-form').submit();">
-										<i class="mdi mdi-logout mr-2 text-primary"></i> Logout 
+										<i class="mdi mdi-logout mr-2 text-primary"></i> Logout
 								</a>
 
 								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -157,7 +157,7 @@
 			</div>
 			<!-- page-body-wrapper ends -->
 		</div>
-	 
+
 		<!-- container-scroller -->
 		<!-- plugins:js -->
 		<script src="{{ asset('adminassets') }}/assets/vendors/js/vendor.bundle.base.js"></script>
@@ -198,7 +198,7 @@
 		</script>
 		@endif
 		<script>
-			
+
 			var t = $('#table').DataTable({
 					"columnDefs": [ {
 							"searchable": false,
