@@ -45,23 +45,8 @@
 
                             </div>
                         </div>
-                        <li class="nav-item ">
-                            <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false"
-                                aria-controls="ui-basic1">
-                                <span class="menu-title">Data Master</span>
-                                <i class="menu-arrow"></i>
-                                <i class="mdi mdi mdi-table-large menu-icon"></i>
-                            </a>
-                            <div class="collapse" id="ui-basic1">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link"
-                                            href="{{ route('admin.product') }}">Produk</a></li>
-                                    <li class="nav-item"> <a
-                                            class="nav-link {{ Request::path() === 'admin/categories' ? 'active' : '' }}"
-                                            href="{{ route('admin.categories') }}">Kategori</a></li>
-                                </ul>
-                            </div>
-                        </li>
+
+
 
                         <div class="col-6 col-md-4 order-3 order-md-3 text-right">
                             <div class="top-right links">
@@ -152,8 +137,8 @@
             <nav class="site-navigation text-right text-md-center" role="navigation">
                 <div class="container">
                     <ul class="site-menu js-clone-nav d-none d-md-block">
-                        <li class="{{ Request::path() === '/' ? '' : '' }}"><a
-                                href="{{ route('home') }}">Beranda</a></li>
+                        <li class="{{ Request::path() === '/' ? '' : '' }}"><a href="{{ route('home') }}">Beranda</a>
+                        </li>
                         <li class="{{ Request::path() === 'produk' ? '' : '' }}"><a
                                 href="{{ route('user.produk') }}">Produk</a></li>
                         <li class="{{ Request::path() === 'kontak' ? '' : '' }}"><a
