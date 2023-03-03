@@ -68,6 +68,8 @@ class ProductController extends Controller
     {
         $prod = $id;
 
+        // dd($prod);
+
         if ($request->file('image')) {
 
             Storage::delete('public/' . $prod->image);
@@ -75,11 +77,12 @@ class ProductController extends Controller
             $prod->image = $file;
         }
 
+        // dd($request->categories_id);
         $prod->name = $request->name;
         $prod->description = $request->description;
         $prod->price = $request->price;
-        $prod->weight = $request->weight;
         $prod->categories_id = $request->categories_id;
+        $prod->size = $request->ukuran;
         $prod->stok = $request->stok;
 
 

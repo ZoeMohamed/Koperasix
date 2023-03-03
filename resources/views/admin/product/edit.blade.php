@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect2">Pilih Kategori</label>
-                                        <select class="form-control" name="categories_id" id="exampleFormControlSelect2">
+                                        <select class="form-control" name="categories_id" id="exampleFormControlSelect2" required>
                                             @foreach ($categories as $categorie)
                                                 <option value="{{ $categorie->id }}" <?php if ($product->categories_id == $categorie->id) {
                                                     echo 'selected';
@@ -51,14 +51,15 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleFormControlSelect2">Pilih Kategori</label>
-                                        <select class="form-control" name="categories_id" id="exampleFormControlSelect2">
-                                            <option {{ $product->size == 's' ? 'selected' : '' }} value="s">S</option>
-                                            <option {{ $product->size == 'm' ? 'selected' : '' }} value="m">M</option>
-                                            <option {{ $product->size == 'l' ? 'selected' : '' }} value="l">L</option>
-                                            <option {{ $product->size == 'xl' ? 'selected' : '' }} value="xl">XL
+                                        <label for="exampleFormControlSelect2">Pilih Ukuran</label>
+                                        <select class="form-control" name="ukuran" id="exampleFormControlSelect2">
+
+                                            <option {{ $product->size == 'S' ? 'selected' : '' }} value="s">S</option>
+                                            <option {{ $product->size == 'M' ? 'selected' : '' }} value="m">M</option>
+                                            <option {{ $product->size == 'L' ? 'selected' : '' }} value="l">L</option>
+                                            <option {{ $product->size == 'XL' ? 'selected' : '' }} value="xl">XL
                                             </option>
-                                            <option {{ $product->size == 'xxl' ? 'selected' : '' }} value="xxl">XXL
+                                            <option {{ $product->size == 'XXL' ? 'selected' : '' }} value="xxl">XXL
                                             </option>
                                         </select>
                                     </div>
