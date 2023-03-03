@@ -15,8 +15,8 @@ class CreateAlamatTokoTable extends Migration
     {
         Schema::create('alamat_toko', function (Blueprint $table) {
             $table->id();
-            $table->integer('city_id');
-            $table->string('detail');
+            $table->integer('city_id')->nullable();
+            $table->string('detail')->nullable()    ;
             $table->timestamps();
         });
     }

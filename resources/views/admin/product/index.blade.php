@@ -34,7 +34,6 @@
                                         <th width="5%">No</th>
                                         <th>Nama Produk</th>
                                         <th>Harga</th>
-                                        <th>Berat</th>
                                         <th>Ukuran</th>
                                         <th>Kategori</th>
                                         <th>Stok</th>
@@ -48,7 +47,6 @@
                                             <td align="center"></td>
                                             <td>{{ $product->name }}</td>
                                             <td>{{ $product->price }}</td>
-                                            <td>{{ $product->weight }}gr</td>
                                             <td>{{ $product->size }}</td>
                                             <td>{{ $product->nama_kategori }}</td>
                                             <td>{{ $product->stok }}</td>

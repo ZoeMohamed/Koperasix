@@ -52,9 +52,12 @@
                                             class="img-fluid" width="100%" style="height:200px">
                                     </a>
                                     <div class="block-4-text p-4">
-                                        <h3><a
-                                                href="{{ route('user.produk.detail', ['id' => $produk->id]) }}">{{ $produk->name }}</a>
+                                        <h3>
+                                            <a href="{{ route('user.produk.detail', ['id' => $produk->id]) }}">{{ $produk->name }}</a>
                                         </h3>
+                                        <h4>
+                                            <p>ukuran : {{ $produk->size }}</p>
+                                        </h4>
                                         <p class="mb-0">RP {{ $produk->price }}</p>
                                         <a href="{{ route('user.produk.detail', ['id' => $produk->id]) }}"
                                             class="btn btn-primary mt-2">Detail</a>

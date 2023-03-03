@@ -39,19 +39,12 @@
                                                     <td>Rp. {{ number_format($total, 2, ',', '.') }}</td>
                                                 </tr>
                                             @endforeach
-                                            <tr>
-                                                <td>
-                                                    Ongkir
-                                                </td>
-                                                <td>
-                                                    Rp .{{ number_format($ongkir, 2, ',', '.') }}
-                                                </td>
-                                            </tr>
+
                                             <tr>
                                                 <td class="text-black font-weight-bold"><strong>Jumlah Pembayaran</strong>
                                                 </td>
                                                 <td class="text-black font-weight-bold">
-                                                    <?php $alltotal = $subtotal + $ongkir; ?>
+                                                    <?php $alltotal = $subtotal; ?>
                                                     <strong>Rp. {{ number_format($alltotal, 2, ',', '.') }}</strong>
                                                 </td>
                                             </tr>
@@ -71,12 +64,10 @@
                                     </div>
                                     <input type="hidden" name="invoice" value="{{ $invoice }}">
                                     <input type="hidden" name="subtotal" value="{{ $alltotal }}">
-                                    <input type="hidden" name="ongkir" value="{{ $ongkir }}">
                                     <div class="form-group">
                                         <label for="">Pilih Metode Pembayaran</label>
                                         <select name="metode_pembayaran" id="" class="form-control">
                                             <option value="trf">Transfer</option>
-                                            <option value="cod">Cod</option>
                                         </select>
                                         <small>Jika memilih cod maka akan dikenakan biaya tambahan sebesar Rp.
                                             10.000,00</small>

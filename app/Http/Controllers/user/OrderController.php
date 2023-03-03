@@ -129,7 +129,6 @@ class OrderController extends Controller
                     'subtotal' => $request->subtotal,
                     'status_order_id' => 1,
                     'metode_pembayaran' => $request->metode_pembayaran,
-                    'ongkir' => $request->ongkir,
                     'biaya_cod' => 10000,
                     'no_hp' => $request->no_hp,
                     'pesan' => $request->pesan
@@ -142,7 +141,6 @@ class OrderController extends Controller
                     'subtotal' => $request->subtotal,
                     'status_order_id' => 1,
                     'metode_pembayaran' => $request->metode_pembayaran,
-                    'ongkir' => $request->ongkir,
                     'no_hp' => $request->no_hp,
                     'pesan' => $request->pesan
                 ]);

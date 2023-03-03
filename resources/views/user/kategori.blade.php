@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <h3 class="display-5" style="text-transform:uppercase">Produk Kategori {{ $categories->name }}</h3>
+                    <h3 class="display-5" style="text-transform:uppercase">Produk Kategori {{ $categories->first()->name }}</h3>
                 </div>
             </div>
             <div class="row mb-5">

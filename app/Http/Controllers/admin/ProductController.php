@@ -29,22 +29,25 @@ class ProductController extends Controller
         return view('admin.product.tambah', compact('categories'));
     }
 
+
     public function store(Request $request)
     {
         if ($request->file('image')) {
             //simpan foto produk yang di upload ke direkteri public/storage/imageproduct
             $file = $request->file('image')->store('imageproduct', 'public');
 
+            // dd($request->size);
             Product::create([
                 'name'          => $request->name,
                 'description'   => $request->description,
                 'price'         => $request->price,
+                'size'         => $request->size,
                 'stok'          => $request->stok,
-                'weight'        => $request->weight,
                 'categories_id' => $request->categories_id,
                 'image'         => $file
 
             ]);
+
 
             return redirect()->route('admin.product')->with('status', 'Berhasil Menambah Produk Baru');
         }
@@ -80,7 +83,7 @@ class ProductController extends Controller
         $prod->stok = $request->stok;
 
 
-        $prod->save();
+        $prod->update();
 
         return redirect()->route('admin.product')->with('status', 'Berhasil Mengubah Kategori');
     }

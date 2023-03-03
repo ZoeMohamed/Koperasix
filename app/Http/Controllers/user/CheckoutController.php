@@ -25,10 +25,10 @@ class CheckoutController extends Controller
             ->get();
 
         //lalu hitung jumlah berat total dari semua produk yang akan di beli
-        $berattotal = 0;
-        foreach ($carts as $item) {
-            $berattotal += ($item->weight * $item->qty);
-        }
+        // $berattotal = 0;
+        // foreach ($carts as $item) {
+        //     $berattotal += ($item->weight * $item->qty);
+        // }
 
         //lalu ambil id kota si pelanngan
         $city_destination = Alamat::where('user_id', $id_user)->first()->cities_id;
@@ -36,18 +36,7 @@ class CheckoutController extends Controller
         //ambil id kota toko
         $alamat_toko = DB::table('alamat_toko')->first();
 
-        //lalu hitung ongkirnya
-        $cost = RajaOngkir::ongkosKirim([
-            'origin'        => $alamat_toko->id,
-            'destination'   => $city_destination,
-            'weight'        => $berattotal,
-            'courier'       => 'jne'
-        ])
-            ->get();
-
-        //ambil hasil nya
-        $ongkir =  $cost[0]['costs'][0]['cost'][0]['value'];
-
+  
         //lalu ambil alamat user untuk ditampilkan di view
         $alamat_user = Alamat::join('cities', 'cities.city_id', '=', 'alamat.cities_id')
             ->join('provinces', 'provinces.province_id', '=', 'cities.province_id')
@@ -55,11 +44,12 @@ class CheckoutController extends Controller
             ->where('alamat.user_id', $id_user)
             ->first();
 
+
+
         //buat kode invoice sesua tanggalbulantahun dan jam
         return view('user.checkout', [
             'invoice' => 'ALV' . Date('Ymdhi'),
             'keranjangs' => $carts,
-            'ongkir' => $ongkir,
             'alamat' => $alamat_user
         ]);
     }

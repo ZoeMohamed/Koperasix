@@ -21,6 +21,7 @@
                         {{ $produk->description }}
                     </p>
                     <p><strong class="text-primary h4">Rp {{ $produk->price }} </strong></p>
+                    <p><strong class="text-primary h4">ukuran : {{$produk->size  }}</strong></p>
                     <div class="mb-5">
                         <form action="{{ route('user.keranjang.simpan') }}" method="post">
                             @csrf

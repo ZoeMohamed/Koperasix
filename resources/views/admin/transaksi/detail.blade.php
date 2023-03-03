@@ -55,13 +55,9 @@
                         <tr>
                             <td>Total</td>
                             <td>:</td>
-                            <td  class="p-2">Rp. {{ number_format($order->subtotal,2,',','.') }} ( Sudah Termasuk Ongkir )</td>
+                            <td  class="p-2">Rp. {{ number_format($order->subtotal,2,',','.') }}</td>
                         </tr>
-                        <tr>
-                            <td>Biaya Ongkir</td>
-                            <td>:</td>
-                            <td  class="p-2">Rp. {{ number_format($order->ongkir,2,',','.') }}</td>
-                        </tr>
+
                         <tr>
                             <td>Kurir</td>
                             <td>:</td>
@@ -70,7 +66,6 @@
                         @if($order->no_resi != null)
                         <tr>
                             <td>No Resi</td>
-                            <td>:</td>
                             <td  class="p-2">{{ $order->no_resi }}</td>
                         </tr>
                         @endif
@@ -152,5 +147,5 @@
               </div>
             </div>
           </div>
-          
+
 @endsection

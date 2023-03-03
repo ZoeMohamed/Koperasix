@@ -49,18 +49,15 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputUsername1">Berat (gram)</label>
-                                                <input required type="number" class="form-control" name="weight">
-                                            </div>
+
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect2">Pilih Ukuran</label>
                                                 <select class="form-control" name="size" id="exampleFormControlSelect2">
-                                                    <option value="s">S</option>
-                                                    <option value="m">M</option>
-                                                    <option value="l">L</option>
-                                                    <option value="xl">XL</option>
-                                                    <option value="xxl">XXL</option>
+                                                    <option value="S">S</option>
+                                                    <option value="M">M</option>
+                                                    <option value="L">L</option>
+                                                    <option value="XL">XL</option>
+                                                    <option value="XXL">XXL</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">

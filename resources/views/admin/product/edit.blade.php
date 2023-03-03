@@ -49,11 +49,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputUsername1">Berat (gram)</label>
-                                        <input required type="number" class="form-control" name="weight"
-                                            value="{{ $product->weight }}">
-                                    </div>
+
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect2">Pilih Kategori</label>
                                         <select class="form-control" name="categories_id" id="exampleFormControlSelect2">

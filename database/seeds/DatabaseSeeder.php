@@ -1,5 +1,6 @@
 <?php
 
+use Database\Seeders\AlamatTokoSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LocationsTableSeeder::class);
         $this->call(OrderStatusSeeder::class);
         $this->call(RekeningTableSeeder::class);
+        $this->call(AlamatTokoSeeder::class);
     }
 }
