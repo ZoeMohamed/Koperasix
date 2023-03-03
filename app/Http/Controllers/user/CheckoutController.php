@@ -20,14 +20,14 @@ class CheckoutController extends Controller
         //ambil produk apa saja yang akan dibeli user dari table keranjang
         $carts = Keranjang::join('users', 'users.id', '=', 'keranjang.user_id')
             ->join('products', 'products.id', '=', 'keranjang.products_id')
-            ->select('products.name as nama_produk', 'products.image', 'products.weigth', 'users.name', 'keranjang.*', 'products.price')
+            ->select('products.name as nama_produk', 'products.image', 'products.weight', 'users.name', 'keranjang.*', 'products.price')
             ->where('keranjang.user_id', '=', $id_user)
             ->get();
 
         //lalu hitung jumlah berat total dari semua produk yang akan di beli
         $berattotal = 0;
         foreach ($carts as $item) {
-            $berattotal += ( $item->weigth * $item->qty );
+            $berattotal += ($item->weight * $item->qty);
         }
 
         //lalu ambil id kota si pelanngan
@@ -43,7 +43,7 @@ class CheckoutController extends Controller
             'weight'        => $berattotal,
             'courier'       => 'jne'
         ])
-        ->get();
+            ->get();
 
         //ambil hasil nya
         $ongkir =  $cost[0]['costs'][0]['cost'][0]['value'];

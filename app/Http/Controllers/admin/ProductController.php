@@ -40,7 +40,7 @@ class ProductController extends Controller
                 'description'   => $request->description,
                 'price'         => $request->price,
                 'stok'          => $request->stok,
-                'weigth'        => $request->weigth,
+                'weight'        => $request->weight,
                 'categories_id' => $request->categories_id,
                 'image'         => $file
 
@@ -75,7 +75,7 @@ class ProductController extends Controller
         $prod->name = $request->name;
         $prod->description = $request->description;
         $prod->price = $request->price;
-        $prod->weigth = $request->weigth;
+        $prod->weight = $request->weight;
         $prod->categories_id = $request->categories_id;
         $prod->stok = $request->stok;
 

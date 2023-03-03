@@ -796,7 +796,7 @@ CREATE TABLE `products` (
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` int(11) NOT NULL,
-  `weigth` int(11) NOT NULL,
+  `weight` int(11) NOT NULL,
   `categories_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -807,7 +807,7 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `image`, `price`, `weigth`, `categories_id`, `created_at`, `updated_at`, `stok`) VALUES
+INSERT INTO `products` (`id`, `name`, `description`, `image`, `price`, `weight`, `categories_id`, `created_at`, `updated_at`, `stok`) VALUES
 (3, 'Jersey PSM', 'Jersey Persib 2020', 'imageproduct/wVC7Lffj05reEFfbdeeiusGZ192hYCDFz1SSP5sm.jpeg', 500000, 500, 1, '2020-03-22 21:43:27', '2020-03-26 08:08:12', 10),
 (9, 'Jersey Persebaya Home', 'Jersey Persebaya 2020', 'imageproduct/nT5A1b7tPKdBMW4ep91ymByircv9ENy0duYzQPYz.jpeg', 500000, 500, 1, '2020-03-22 21:43:27', '2020-03-26 08:06:01', 8),
 (15, 'Jersey Persib', 'Jersey Persib 2020', 'imageproduct/E3eNi22KHXz0cDVR3bL8s5nxAxzhZ3U1EXNBJ6oY.jpeg', 500000, 500, 1, '2020-03-22 21:43:27', '2020-03-26 08:06:24', 10),
