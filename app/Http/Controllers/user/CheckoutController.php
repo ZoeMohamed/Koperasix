@@ -20,7 +20,7 @@ class CheckoutController extends Controller
         //ambil produk apa saja yang akan dibeli user dari table keranjang
         $carts = Keranjang::join('users', 'users.id', '=', 'keranjang.user_id')
             ->join('products', 'products.id', '=', 'keranjang.products_id')
-            ->select('products.name as nama_produk', 'products.image', 'products.weight', 'users.name', 'keranjang.*', 'products.price')
+            ->select('products.name as nama_produk', 'products.image','users.name', 'keranjang.*', 'products.price')
             ->where('keranjang.user_id', '=', $id_user)
             ->get();
 
@@ -36,14 +36,13 @@ class CheckoutController extends Controller
         //ambil id kota toko
         $alamat_toko = DB::table('alamat_toko')->first();
 
-  
+
         //lalu ambil alamat user untuk ditampilkan di view
         $alamat_user = Alamat::join('cities', 'cities.city_id', '=', 'alamat.cities_id')
             ->join('provinces', 'provinces.province_id', '=', 'cities.province_id')
             ->select('alamat.*', 'cities.title as kota', 'provinces.title as prov')
             ->where('alamat.user_id', $id_user)
             ->first();
-
 
 
         //buat kode invoice sesua tanggalbulantahun dan jam
