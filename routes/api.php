@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Test midtrans
+Route::post('/tes', 'user\OrderController@tes');
+
+// Route::post('midtrans', 'user\OrderController@tes');

@@ -1,5 +1,10 @@
 @extends('user.app')
 @section('content')
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="Mid-client-SwufDJrh41wLKU4U"></script>
+
+    {{-- <script type="text/javascript" src="https://app.midtrans.com/snap/snap.js"
+        data-client-key="Mid-client-SwufDJrh41wLKU4U"></script> --}}
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
@@ -19,68 +24,68 @@
                         <div class="col-md-12">
                             <h2 class="h3 mb-3 text-black">Your Order</h2>
                             <div class="p-3 p-lg-5 border">
-                                <form action="{{ route('user.order.simpan') }}" method="POST">
-                                    @csrf
-                                    <table class="table site-block-order-table mb-5">
-                                        <thead>
-                                            <th>Product</th>
-                                            <th>Total</th>
-                                        </thead>
-                                        <tbody>
-                                            <?php $subtotal = 0; ?>
-                                            @foreach ($keranjangs as $keranjang)
-                                                <tr>
-                                                    <td>{{ $keranjang->nama_produk }} <strong class="mx-2">x</strong>
-                                                        {{ $keranjang->qty }}</td>
-                                                    <?php
-                                                    $total = $keranjang->price * $keranjang->qty;
-                                                    $subtotal = $subtotal + $total;
-                                                    ?>
-                                                    <td>Rp. {{ number_format($total, 2, ',', '.') }}</td>
-                                                </tr>
-                                            @endforeach
-
+                                {{-- <form action="{{ route('user.order.simpan') }}" method="POST">
+                                        @csrf --}}
+                                <table class="table site-block-order-table mb-5">
+                                    <thead>
+                                        <th>Product</th>
+                                        <th>Total</th>
+                                    </thead>
+                                    <tbody>
+                                        <?php $subtotal = 0; ?>
+                                        @foreach ($keranjangs as $keranjang)
                                             <tr>
-                                                <td class="text-black font-weight-bold"><strong>Jumlah Pembayaran</strong>
-                                                </td>
-                                                <td class="text-black font-weight-bold">
-                                                    <?php $alltotal = $subtotal; ?>
-                                                    <strong>Rp. {{ number_format($alltotal, 2, ',', '.') }}</strong>
-                                                </td>
+                                                <td>{{ $keranjang->nama_produk }} <strong class="mx-2">x</strong>
+                                                    {{ $keranjang->qty }}</td>
+                                                <?php
+                                                $total = $keranjang->price * $keranjang->qty;
+                                                $subtotal = $subtotal + $total;
+                                                ?>
+                                                <td>Rp. {{ number_format($total, 2, ',', '.') }}</td>
                                             </tr>
-                                            <tr>
-                                                <td>Alamat Penerima</td>
-                                                <td>{{ $alamat->detail }}, {{ $alamat->kota }}, {{ $alamat->prov }}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="form-group">
-                                        <label for="">Catatan</label>
-                                        <textarea name="pesan" class="form-control"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">No telepon yang bisa dihubungi</label>
-                                        <input type="text" name="no_hp" id="" class="form-control">
-                                    </div>
-                                    <input type="hidden" name="invoice" value="{{ $invoice }}">
-                                    <input type="hidden" name="subtotal" value="{{ $alltotal }}">
-                                    <div class="form-group">
-                                        <label for="">Pilih Metode Pembayaran</label>
-                                        <select name="metode_pembayaran" id="" class="form-control">
-                                            <option value="trf">Transfer</option>
-                                        </select>
-                                        <small>Jika memilih cod maka akan dikenakan biaya tambahan sebesar Rp.
-                                            10.000,00</small>
-                                    </div>
+                                        @endforeach
+
+                                        <tr>
+                                            <td class="text-black font-weight-bold"><strong>Jumlah Pembayaran</strong>
+                                            </td>
+                                            <td class="text-black font-weight-bold">
+                                                <?php $alltotal = $subtotal; ?>
+                                                <strong>Rp. {{ number_format($alltotal, 2, ',', '.') }}</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alamat Penerima</td>
+                                            <td>{{ $alamat->detail }}, {{ $alamat->kota }}, {{ $alamat->prov }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="form-group">
+                                    <label for="">Catatan</label>
+                                    <textarea name="pesan" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">No telepon yang bisa dihubungi</label>
+                                    <input type="text" name="no_hp" id="" class="form-control">
+                                </div>
+                                <input type="hidden" name="invoice" value="{{ $invoice }}">
+                                <input type="hidden" name="subtotal" value="{{ $alltotal }}">
+                                <div class="form-group">
+                                    <label for="">Pilih Metode Pembayaran</label>
+                                    <select name="metode_pembayaran" id="" class="form-control">
+                                        <option value="trf">Transfer</option>
+                                    </select>
+                                    <small>Jika memilih cod maka akan dikenakan biaya tambahan sebesar Rp.
+                                        10.000,00</small>
+                                </div>
 
 
-                                    <div class="form-group">
-                                        <button class="btn btn-primary btn-lg py-3 btn-block" type="submit">Pesan
-                                            Sekarang</button>
-                                        <small>Mohon periksa alamat penerima dengan benar agar tidak terjadi salah
-                                            pengiriman</small>
-                                    </div>
-                                </form>
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-lg py-3 btn-block" id="pay-button">Pesan
+                                        Sekarang</button>
+                                    <small>Mohon periksa alamat penerima dengan benar agar tidak terjadi salah
+                                        pengiriman</small>
+                                </div>
+                                {{-- </form> --}}
                             </div>
                         </div>
                     </div>
@@ -90,4 +95,40 @@
             <!-- </form> -->
         </div>
     </div>
+
+
+
+
+    <script type="text/javascript">
+        // For example trigger on button clicked, or any time you need
+        var payButton = document.getElementById('pay-button');
+
+        let data = '<?php echo $snap_token; ?>'
+
+        console.log(data)
+        payButton.addEventListener('click', function() {
+            // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+            window.snap.pay(data, {
+                onSuccess: function(result) {
+                    /* You may add your own implementation here */
+                    alert("payment success!");
+                    console.log(result);
+                },
+                onPending: function(result) {
+                    /* You may add your own implementation here */
+                    alert("wating your payment!");
+                    console.log(result);
+                },
+                onError: function(result) {
+                    /* You may add your own implementation here */
+                    alert("payment failed!");
+                    console.log(result);
+                },
+                onClose: function() {
+                    /* You may add your own implementation here */
+                    alert('you closed the popup without finishing the payment');
+                }
+            })
+        });
+    </script>
 @endsection

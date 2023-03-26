@@ -36,7 +36,7 @@ class CheckoutController extends Controller
         //ambil id kota toko
         $alamat_toko = DB::table('alamat_toko')->first();
 
-  
+
         //lalu ambil alamat user untuk ditampilkan di view
         $alamat_user = Alamat::join('cities', 'cities.city_id', '=', 'alamat.cities_id')
             ->join('provinces', 'provinces.province_id', '=', 'cities.province_id')
@@ -46,11 +46,40 @@ class CheckoutController extends Controller
 
 
 
+        //SAMPLE REQUEST START HERE
+
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = config('midtrans.key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => 10000,
+            ),
+            'customer_details' => array(
+                'first_name' => 'budi',
+                'last_name' => 'pratama',
+                'email' => 'budi.pra@example.com',
+                'phone' => '08111222333',
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+
+
         //buat kode invoice sesua tanggalbulantahun dan jam
         return view('user.checkout', [
             'invoice' => 'ALV' . Date('Ymdhi'),
             'keranjangs' => $carts,
-            'alamat' => $alamat_user
+            'alamat' => $alamat_user,
+            'snap_token' => $snapToken
         ]);
     }
 }
