@@ -63,10 +63,7 @@
                                                             <span class="icon icon-person"></span>
                                                         </a>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('user.alamat') }}">Pengaturan Alamat</a>
-                                                            <a class="dropdown-item" href="#">Pengaturan Akun</a>
-                                                            <a class="dropdown-item" href="#">
+                                                         
 
                                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                                     onclick="event.preventDefault();

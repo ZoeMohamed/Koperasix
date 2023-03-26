@@ -1,7 +1,6 @@
 @extends('user.app')
 @section('content')
-    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="Mid-client-SwufDJrh41wLKU4U"></script>
+
 
     {{-- <script type="text/javascript" src="https://app.midtrans.com/snap/snap.js"
         data-client-key="Mid-client-SwufDJrh41wLKU4U"></script> --}}
@@ -53,10 +52,7 @@
                                                 <strong>Rp. {{ number_format($alltotal, 2, ',', '.') }}</strong>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Alamat Penerima</td>
-                                            <td>{{ $alamat->detail }}, {{ $alamat->kota }}, {{ $alamat->prov }}</td>
-                                        </tr>
+                                     
                                     </tbody>
                                 </table>
                                 <div class="form-group">
@@ -99,36 +95,5 @@
 
 
 
-    <script type="text/javascript">
-        // For example trigger on button clicked, or any time you need
-        var payButton = document.getElementById('pay-button');
 
-        let data = '<?php echo $snap_token; ?>'
-
-        console.log(data)
-        payButton.addEventListener('click', function() {
-            // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-            window.snap.pay(data, {
-                onSuccess: function(result) {
-                    /* You may add your own implementation here */
-                    alert("payment success!");
-                    console.log(result);
-                },
-                onPending: function(result) {
-                    /* You may add your own implementation here */
-                    alert("wating your payment!");
-                    console.log(result);
-                },
-                onError: function(result) {
-                    /* You may add your own implementation here */
-                    alert("payment failed!");
-                    console.log(result);
-                },
-                onClose: function() {
-                    /* You may add your own implementation here */
-                    alert('you closed the popup without finishing the payment');
-                }
-            })
-        });
-    </script>
 @endsection

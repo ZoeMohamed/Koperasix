@@ -26,7 +26,7 @@
             </thead>
             <tbody>
                 <tr>
-                    
+
                 <?php $subtotal=0; foreach($keranjangs as $keranjang): ?>
                 <td class="product-thumbnail">
                     <img src="{{ asset('storage/'.$keranjang->image) }}" alt="Image" class="img-fluid" width="150">
@@ -58,16 +58,21 @@
                 <?php endforeach;?>
             </tbody>
             </table>
-        
+
     </div>
 
     <div class="row">
         <div class="col-md-6">
         <div class="row mb-5">
             <div class="col-md-6 mb-3 mb-md-0">
-            <button type="submit" class="btn btn-primary btn-sm btn-block">Update Keranjang</button>
+                @if(count($keranjangs) == 0)
+
+                @else
+                <button type="submit" class="btn btn-primary btn-sm btn-block" >Update Keranjang</button>
+
+                @endif
             </div>
-            </form>       
+            </form>
         </div>
         </div>
         <div class="col-md-6 pl-5">
@@ -88,17 +93,15 @@
             </div>
 
             <div class="row">
-                @if($cekalamat > 0)
                 <div class="col-md-12">
-                <a href="{{ route('user.checkout') }}" class="btn btn-primary btn-lg py-3 btn-block" >Checkout</a>
+
+                <a href="{{ route('user.checkout') }}" class="btn btn-primary btn-lg py-3 btn-block disabled {{ count($keranjangs) == 0  ? 'disabled' : '' }}" >Checkout</a>
                 <small>Jika Merubah Quantity Pada Keranjang Maka Klik Update Keranjang Dulu Sebelum Melakukan Checkout</small>
                 </div>
-                @else
-                <div class="col-md-12">
+                {{-- <div class="col-md-12">
                 <a href="{{ route('user.alamat') }}" class="btn btn-primary btn-lg py-3 btn-block" >Atur Alamat</a>
                 <small>Anda Belum Mengatur Alamat</small>
-                </div>
-                @endif
+                </div> --}}
             </div>
             </div>
         </div>

@@ -22,10 +22,8 @@ class KeranjangController extends Controller
             ->where('keranjang.user_id', '=', $id_user)
             ->get();
 
-        $cekalamat = Alamat::where('user_id', $id_user)->count();
         $data = [
             'keranjangs' => $keranjangs,
-            'cekalamat'  => $cekalamat
         ];
         return view('user.keranjang', $data);
     }

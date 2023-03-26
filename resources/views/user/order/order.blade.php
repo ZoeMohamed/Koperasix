@@ -54,7 +54,7 @@
             </div>
 
             <div class="container">
-                <div class="row mb-3">
+                <div class="row mb-4">
                     <div class="col-md-12">
                         <h2 class="btn btn-warning text-white">Sedang Dalam Proses</h2>
                     </div>
