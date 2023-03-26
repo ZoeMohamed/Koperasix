@@ -58,11 +58,7 @@
                             <td  class="p-2">Rp. {{ number_format($order->subtotal,2,',','.') }}</td>
                         </tr>
 
-                        <tr>
-                            <td>Kurir</td>
-                            <td>:</td>
-                            <td  class="p-2">JNE Service OKE</td>
-                        </tr>
+                     
                         @if($order->no_resi != null)
                         <tr>
                             <td>No Resi</td>
