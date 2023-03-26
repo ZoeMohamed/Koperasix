@@ -29,22 +29,25 @@ class ProductController extends Controller
         return view('admin.product.tambah', compact('categories'));
     }
 
+
     public function store(Request $request)
     {
         if ($request->file('image')) {
             //simpan foto produk yang di upload ke direkteri public/storage/imageproduct
             $file = $request->file('image')->store('imageproduct', 'public');
 
+            // dd($request->size);
             Product::create([
                 'name'          => $request->name,
                 'description'   => $request->description,
                 'price'         => $request->price,
+                'size'         => $request->size,
                 'stok'          => $request->stok,
-                'weigth'        => $request->weigth,
                 'categories_id' => $request->categories_id,
                 'image'         => $file
 
             ]);
+
 
             return redirect()->route('admin.product')->with('status', 'Berhasil Menambah Produk Baru');
         }
@@ -65,6 +68,8 @@ class ProductController extends Controller
     {
         $prod = $id;
 
+        // dd($prod);
+
         if ($request->file('image')) {
 
             Storage::delete('public/' . $prod->image);
@@ -72,15 +77,16 @@ class ProductController extends Controller
             $prod->image = $file;
         }
 
+        // dd($request->categories_id);
         $prod->name = $request->name;
         $prod->description = $request->description;
         $prod->price = $request->price;
-        $prod->weigth = $request->weigth;
         $prod->categories_id = $request->categories_id;
+        $prod->size = $request->ukuran;
         $prod->stok = $request->stok;
 
 
-        $prod->save();
+        $prod->update();
 
         return redirect()->route('admin.product')->with('status', 'Berhasil Mengubah Kategori');
     }

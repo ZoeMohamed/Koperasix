@@ -8,15 +8,20 @@ use App\Order;
 use App\Detailorder;
 use App\Keranjang;
 use App\Rekening;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
 
     public function index()
     {
+
+
         //menampilkan semua data pesanan
         $user_id = Auth::user()->id;
 
@@ -38,10 +43,38 @@ class OrderController extends Controller
             ->Where('order.status_order_id', '!=', 4)
             ->where('order.user_id', $user_id)->get();
 
+
+        //SAMPLE REQUEST START HERE
+
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = config('midtrans.production');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => 10000,
+            ),
+            'customer_details' => array(
+                'first_name' => 'budi',
+                'last_name' => 'pratama',
+                'email' => 'budi.pra@example.com',
+                'phone' => '08111222333',
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
         return view('user.order.order', [
             'order' => $order,
             'dicek' => $dicek,
-            'histori' => $histori
+            'histori' => $histori,
+            'snap_token' => $snapToken
         ]);
     }
 
@@ -73,17 +106,21 @@ class OrderController extends Controller
 
     public function kirimbukti($id, Request $request)
     {
+
+        dd("d");
         //mengupload bukti pembayaran
-        $order = Order::findOrFail($id);
-        if ($request->file('bukti_pembayaran')) {
-            $file = $request->file('bukti_pembayaran')->store('buktibayar', 'public');
+        // $order = Order::findOrFail($id);
+        // if ($request->file('bukti_pembayaran')) {
+        //     $file = $request->file('bukti_pembayaran')->store('buktibayar', 'public');
 
-            $order->bukti_pembayaran = $file;
-            $order->status_order_id  = 2;
+        //     $order->bukti_pembayaran = $file;
+        //     $order->status_order_id  = 2;
 
-            $order->save();
-        }
-        return redirect()->route('user.order');
+        //     $order->save();
+        // }
+        // return redirect()->route('user.order');
+
+        // Briva Payment
     }
 
     public function pembayaran($id)
@@ -129,7 +166,6 @@ class OrderController extends Controller
                     'subtotal' => $request->subtotal,
                     'status_order_id' => 1,
                     'metode_pembayaran' => $request->metode_pembayaran,
-                    'ongkir' => $request->ongkir,
                     'biaya_cod' => 10000,
                     'no_hp' => $request->no_hp,
                     'pesan' => $request->pesan
@@ -142,7 +178,6 @@ class OrderController extends Controller
                     'subtotal' => $request->subtotal,
                     'status_order_id' => 1,
                     'metode_pembayaran' => $request->metode_pembayaran,
-                    'ongkir' => $request->ongkir,
                     'no_hp' => $request->no_hp,
                     'pesan' => $request->pesan
                 ]);
@@ -166,5 +201,76 @@ class OrderController extends Controller
         }
 
         return redirect()->route('user.keranjang');
+    }
+
+    public function tes(Request $request)
+    {
+        $key =  config('midtrans.key');
+
+        $hashed = hash('sha512', $request->order_id. $request->status_code. $request->gross_amount. $request->key);
+
+
+        if($hashed == $request->signature_key){
+            if($request->transaction_status == 'capture'){
+                // $order = Order::find($req)
+            }
+        }
+
+        // //SAMPLE REQUEST START HERE
+
+        // // Set your Merchant Server Key
+        // \Midtrans\Config::$serverKey = config('midtrans.key');
+        // // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        // \Midtrans\Config::$isProduction = false;
+        // // Set sanitization on (default)
+        // \Midtrans\Config::$isSanitized = true;
+        // // Set 3DS transaction for credit card to true
+        // \Midtrans\Config::$is3ds = true;
+
+        // $params = array(
+        //     'transaction_details' => array(
+        //         'order_id' => rand(),
+        //         'gross_amount' => 10000,
+        //     ),
+        //     'customer_details' => array(
+        //         'first_name' => 'budi',
+        //         'last_name' => 'pratama',
+        //         'email' => 'budi.pra@example.com',
+        //         'phone' => '08111222333',
+        //     ),
+        // );
+
+        // $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+
+        // return view('user.order.order',$snapToken);
+        //     try {
+        //         DB::beginTransaction();
+        //         $serverkey = config('midtrans.key');
+
+        //         $x = Http::withBasicAuth($serverkey, '')->post('https://app.sandbox.midtrans.com/snap/v1/transactions', [
+        //             'payment_type' => 'bank_transfer',
+        //             'transaction_details' => [
+        //                 'order_id' => Str::uuid()->toString(),
+        //                 'gross_amount' => 9000
+        //             ],
+        //             'bank_transfer' => [
+        //                 'bank' => "bri"
+        //             ]
+        //         ]);
+
+        //         DB::commit();
+
+        //         return response()->json(
+        //             [$x->json()]
+        //         );
+        //     } catch (Exception $e) {
+        //         DB::rollBack();
+
+        //         return response()->json([
+        //             "x" => "xx"
+        //         ]);
+        //     }
+        // }
     }
 }

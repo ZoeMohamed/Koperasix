@@ -5,6 +5,7 @@
     <title>Web Koperasi &mdash; SMKN 10 Jakarta </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
     <link rel="stylesheet" href="{{ asset('shopper') }}/fonts/icomoon/style.css">
@@ -40,7 +41,7 @@
 
                         <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
                             <div class="site-logo">
-                                <a href="index.html" class="js-logo-clone">Web Koperasi</a>
+                                <a href={{ route('home') }} class="js-logo-clone">Koperasi 10</a>
 
 
                             </div>
@@ -141,87 +142,12 @@
                         </li>
                         <li class="{{ Request::path() === 'produk' ? '' : '' }}"><a
                                 href="{{ route('user.produk') }}">Produk</a></li>
-                        <li class="{{ Request::path() === 'kontak' ? '' : '' }}"><a
-                                href="{{ route('kontak') }}">Kontak</a></li>
                     </ul>
                 </div>
             </nav>
         </header>
 
         @yield('content')
-
-        <footer class="site-footer border-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 mb-5 mb-lg-0">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3 class="footer-heading mb-4">Navigations</h3>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <ul class="list-unstyled">
-                                    <li><a href="#">Sell online</a></li>
-                                    <li><a href="#">Features</a></li>
-                                    <li><a href="#">Shopping cart</a></li>
-                                    <li><a href="#">Store builder</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <ul class="list-unstyled">
-                                    <li><a href="#">Mobile commerce</a></li>
-                                    <li><a href="#">Dropshipping</a></li>
-                                    <li><a href="#">Website development</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <ul class="list-unstyled">
-                                    <li><a href="#">Point of sale</a></li>
-                                    <li><a href="#">Hardware</a></li>
-                                    <li><a href="#">Software</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                        <div class="block-5 mb-5">
-                            <h3 class="footer-heading mb-4">Contact Info</h3>
-                            <ul class="list-unstyled">
-                                <li class="address">Jalan sukses menuju dunia akhirat</li>
-                                <li class="phone"><a href="tel://23923929210">+62 3392 3929 210</a></li>
-                                <li class="email">sport@gmail.com</li>
-                            </ul>
-                        </div>
-
-                        <div class="block-7">
-                            <form action="#" method="post">
-                                <label for="email_subscribe" class="footer-heading">Subscribe</label>
-                                <div class="form-group">
-                                    <input type="text" class="form-control py-4" id="email_subscribe"
-                                        placeholder="Email">
-                                    <input type="submit" class="btn btn-sm btn-primary" value="Send">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="row pt-5 mt-5 text-center">
-                    <div class="col-md-12">
-                        <p>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;
-                            <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script> All rights reserved | This template is made with <i
-                                class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                target="_blank" class="text-primary">Colorlib</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </footer>
     </div>
 
     <script src="{{ asset('shopper') }}/js/jquery-3.3.1.min.js"></script>

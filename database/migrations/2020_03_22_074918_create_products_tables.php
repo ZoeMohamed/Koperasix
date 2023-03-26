@@ -19,7 +19,7 @@ class CreateProductsTables extends Migration
             $table->text('description');
             $table->text('image');
             $table->integer('price');
-            $table->integer('weigth');
+            $table->enum('size', ['S', 'M', 'L', 'XL', 'XXL'])->nullable();
             $table->unsignedBigInteger('categories_id');
             $table->timestamps();
         });
