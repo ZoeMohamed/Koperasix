@@ -95,7 +95,7 @@
             <div class="row">
                 <div class="col-md-12">
 
-                <a href="{{ route('user.checkout') }}" class="btn btn-primary btn-lg py-3 btn-block disabled {{ count($keranjangs) == 0  ? 'disabled' : '' }}" >Checkout</a>
+                <a href="{{ route('user.checkout') }}" class="btn btn-primary btn-lg py-3 btn-block  {{ count($keranjangs) == 0  ? 'disabled' : '' }}" >Checkout</a>
                 <small>Jika Merubah Quantity Pada Keranjang Maka Klik Update Keranjang Dulu Sebelum Melakukan Checkout</small>
                 </div>
                 {{-- <div class="col-md-12">

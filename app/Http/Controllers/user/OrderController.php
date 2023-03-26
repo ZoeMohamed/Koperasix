@@ -82,18 +82,17 @@ class OrderController extends Controller
     public function kirimbukti($id, Request $request)
     {
 
-        dd("d");
         //mengupload bukti pembayaran
-        // $order = Order::findOrFail($id);
-        // if ($request->file('bukti_pembayaran')) {
-        //     $file = $request->file('bukti_pembayaran')->store('buktibayar', 'public');
+        $order = Order::findOrFail($id);
+        if ($request->file('bukti_pembayaran')) {
+            $file = $request->file('bukti_pembayaran')->store('buktibayar', 'public');
 
-        //     $order->bukti_pembayaran = $file;
-        //     $order->status_order_id  = 2;
+            $order->bukti_pembayaran = $file;
+            $order->status_order_id  = 2;
 
-        //     $order->save();
-        // }
-        // return redirect()->route('user.order');
+            $order->save();
+        }
+        return redirect()->route('user.order');
 
         // Briva Payment
     }

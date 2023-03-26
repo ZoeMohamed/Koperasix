@@ -23,8 +23,8 @@
                         <div class="col-md-12">
                             <h2 class="h3 mb-3 text-black">Your Order</h2>
                             <div class="p-3 p-lg-5 border">
-                                {{-- <form action="{{ route('user.order.simpan') }}" method="POST">
-                                        @csrf --}}
+                                <form action="{{ route('user.order.simpan') }}" method="POST">
+                                        @csrf
                                 <table class="table site-block-order-table mb-5">
                                     <thead>
                                         <th>Product</th>
@@ -52,7 +52,7 @@
                                                 <strong>Rp. {{ number_format($alltotal, 2, ',', '.') }}</strong>
                                             </td>
                                         </tr>
-                                     
+
                                     </tbody>
                                 </table>
                                 <div class="form-group">
@@ -76,12 +76,12 @@
 
 
                                 <div class="form-group">
-                                    <button class="btn btn-primary btn-lg py-3 btn-block" id="pay-button">Pesan
+                                    <button class="btn btn-primary btn-lg py-3 btn-block" type="submit">Pesan
                                         Sekarang</button>
                                     <small>Mohon periksa alamat penerima dengan benar agar tidak terjadi salah
                                         pengiriman</small>
                                 </div>
-                                {{-- </form> --}}
+                                </form>
                             </div>
                         </div>
                     </div>
