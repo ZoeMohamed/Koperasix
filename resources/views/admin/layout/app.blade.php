@@ -135,10 +135,10 @@
                                         href="{{ route('admin.transaksi') }}">Pesanan Baru</a></li>
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ route('admin.transaksi.perludicek') }}">Perlu Di Cek</a></li>
-                                <li class="nav-item"> <a class="nav-link"
+                                {{-- <li class="nav-item"> <a class="nav-link"
                                         href="{{ route('admin.transaksi.perludikirim') }}">Perlu Di Kirim</a></li>
                                 <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('admin.transaksi.dikirim') }}">Barang Di Kirim</a></li>
+                                        href="{{ route('admin.transaksi.dikirim') }}">Barang Di Kirim</a></li> --}}
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ route('admin.transaksi.selesai') }}">Selesai</a></li>
                                 <li class="nav-item"> <a class="nav-link"

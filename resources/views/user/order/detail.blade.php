@@ -28,11 +28,11 @@
                                             <td>:</td>
                                             <td>{{ $order->invoice }}</td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <th>No Resi</th>
                                             <td>:</td>
                                             <td>{{ $order->no_resi }}</td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr>
                                             <th>Status Pesanan</th>
                                             <td>:</td>

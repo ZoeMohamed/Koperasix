@@ -56,17 +56,17 @@ class TransaksiController extends Controller
         return view('admin.transaksi.perludicek', compact('orderbaru'));
     }
 
-    public function perludikirim()
-    {
-        //ambil data order yang status nya 3 sudah dicek dan perlu dikirim(input no resi)
-        $orderbaru = Order::join('status_order', 'status_order.id', '=', 'order.status_order_id')
-            ->join('users', 'users.id', '=', 'order.user_id')
-            ->select('order.*', 'status_order.name', 'users.name as nama_pemesan')
-            ->where('order.status_order_id', 3)
-            ->get();
+    // public function perludikirim()
+    // {
+    //     //ambil data order yang status nya 3 sudah dicek dan perlu dikirim(input no resi)
+    //     $orderbaru = Order::join('status_order', 'status_order.id', '=', 'order.status_order_id')
+    //         ->join('users', 'users.id', '=', 'order.user_id')
+    //         ->select('order.*', 'status_order.name', 'users.name as nama_pemesan')
+    //         ->where('order.status_order_id', 3)
+    //         ->get();
 
-        return view('admin.transaksi.perludikirim', compact('orderbaru'));
-    }
+    //     return view('admin.transaksi.perludikirim', compact('orderbaru'));
+    // }
 
     public function selesai()
     {
@@ -74,7 +74,7 @@ class TransaksiController extends Controller
         $orderbaru = Order::join('status_order', 'status_order.id', '=', 'order.status_order_id')
             ->join('users', 'users.id', '=', 'order.user_id')
             ->select('order.*', 'status_order.name', 'users.name as nama_pemesan')
-            ->where('order.status_order_id', 5)
+            ->where('order.status_order_id', 3)
             ->get();
 
         return view('admin.transaksi.selesai', compact('orderbaru'));
@@ -86,23 +86,23 @@ class TransaksiController extends Controller
         $orderbaru = Order::join('status_order', 'status_order.id', '=', 'order.status_order_id')
             ->join('users', 'users.id', '=', 'order.user_id')
             ->select('order.*', 'status_order.name', 'users.name as nama_pemesan')
-            ->where('order.status_order_id', 6)
+            ->where('order.status_order_id', 4)
             ->get();
 
         return view('admin.transaksi.dibatalkan', compact('orderbaru'));
     }
 
-    public function dikirim()
-    {
-        //ambil data order yang status nya 4 atau sedang dikirim
-        $orderbaru = Order::join('status_order', 'status_order.id', '=', 'order.status_order_id')
-            ->join('users', 'users.id', '=', 'order.user_id')
-            ->select('order.*', 'status_order.name', 'users.name as nama_pemesan')
-            ->where('order.status_order_id', 4)
-            ->get();
+    // public function dikirim()
+    // {
+    //     //ambil data order yang status nya 4 atau sedang dikirim
+    //     $orderbaru = Order::join('status_order', 'status_order.id', '=', 'order.status_order_id')
+    //         ->join('users', 'users.id', '=', 'order.user_id')
+    //         ->select('order.*', 'status_order.name', 'users.name as nama_pemesan')
+    //         ->where('order.status_order_id', 4)
+    //         ->get();
 
-        return view('admin.transaksi.dikirim', compact('orderbaru'));
-    }
+    //     return view('admin.transaksi.dikirim', compact('orderbaru'));
+    // }
 
     public function konfirmasi(Order $id)
     {
@@ -116,18 +116,18 @@ class TransaksiController extends Controller
         foreach ($order as $item) {
             Product::where('id', $item->product_id)->decrement('stok', $item->qty);
         }
-        return redirect()->route('admin.transaksi.perludikirim')->with('status', 'Berhasil Mengonfirmasi Pembayaran Pesanan');
+        return redirect()->route('admin.transaksi.selesai')->with('status', 'Berhasil Mengonfirmasi Pembayaran Pesanan');
     }
 
-    public function inputresi($id, Request $request)
-    {
-        //funtion untuk menginput no resi pesanan
-        Order::where('id', $id)
-            ->update([
-                'no_resi'           => $request->no_resi,
-                'status_order_id'   => 4
-            ]);
+    // public function inputresi($id, Request $request)
+    // {
+    //     //funtion untuk menginput no resi pesanan
+    //     Order::where('id', $id)
+    //         ->update([
+    //             'no_resi'           => $request->no_resi,
+    //             'status_order_id'   => 4
+    //         ]);
 
-        return redirect()->route('admin.transaksi.perludikirim')->with('status', 'Berhasil Menginput No Resi');
-    }
+    //     return redirect()->route('admin.transaksi.perludikirim')->with('status', 'Berhasil Menginput No Resi');
+    // }
 }

@@ -115,7 +115,7 @@
                                             @foreach ($histori as $o)
                                                 <tr>
                                                     <td>{{ $o->invoice }}</td>
-                                                    <td>{{ $o->subtotal + $o->biaya_cod }}</td>
+                                                    <td>{{ $o->subtotal }}</td>
                                                     <td>{{ $o->name }}</td>
                                                     <td>
                                                         <a href="{{ route('user.order.detail', ['id' => $o->id]) }}"

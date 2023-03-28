@@ -27,8 +27,14 @@ class ProdukController extends Controller
     public function detail($id)
     {
         //mengambil detail produk
+        $kat = Categories::join('products', 'products.categories_id', '=', 'categories.id')
+        ->select(DB::raw('count(products.categories_id) as jumlah, categories.*'))
+        ->groupBy('categories.id')
+        ->get();
+
         return view('user.produkdetail', [
-            'produk' => Product::findOrFail($id)
+            'produk' => Product::findOrFail($id),
+            'categories' => $kat
         ]);
     }
 

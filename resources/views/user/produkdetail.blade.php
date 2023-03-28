@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-0"><a href={{ route('home') }}>Home</a> <span class="mx-2 mb-0">/</span> <strong
-                        class="text-black">Tank Top T-Shirt</strong></div>
+                        class="text-black">{{ $produk->name }}</strong></div>
             </div>
         </div>
     </div>

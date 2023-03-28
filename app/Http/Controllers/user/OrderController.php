@@ -32,20 +32,18 @@ class OrderController extends Controller
         $dicek = Order::join('status_order', 'status_order.id', '=', 'order.status_order_id')
             ->select('order.*', 'status_order.name')
             ->where('order.status_order_id', '!=', 1)
-            ->Where('order.status_order_id', '!=', 5)
-            ->Where('order.status_order_id', '!=', 6)
+            ->Where('order.status_order_id', '!=', 3)
+            ->Where('order.status_order_id', '!=', 4)
             ->where('order.user_id', $user_id)->get();
         $histori = Order::join('status_order', 'status_order.id', '=', 'order.status_order_id')
             ->select('order.*', 'status_order.name')
             ->where('order.status_order_id', '!=', 1)
             ->Where('order.status_order_id', '!=', 2)
-            ->Where('order.status_order_id', '!=', 3)
-            ->Where('order.status_order_id', '!=', 4)
             ->where('order.user_id', $user_id)->get();
 
 
 
-
+        // dd($dicek);
         return view('user.order.order', [
             'order' => $order,
             'dicek' => $dicek,
@@ -106,21 +104,21 @@ class OrderController extends Controller
         ]);
     }
 
-    public function pesananditerima($id)
-    {
-        //function untuk menerima pesanan
-        $order = Order::findOrFail($id);
-        $order->status_order_id = 5;
-        $order->save();
+    // public function pesananditerima($id)
+    // {
+    //     //function untuk menerima pesanan
+    //     $order = Order::findOrFail($id);
+    //     $order->status_order_id = 5;
+    //     $order->save();
 
-        return redirect()->route('user.order');
-    }
+    //     return redirect()->route('user.order');
+    // }
 
     public function pesanandibatalkan($id)
     {
         //function untuk membatalkan pesanan
         $order = Order::findOrFail($id);
-        $order->status_order_id = 6;
+        $order->status_order_id = 4;
         $order->save();
 
         return redirect()->route('user.order');

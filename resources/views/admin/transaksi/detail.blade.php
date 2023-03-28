@@ -40,13 +40,13 @@
                             <td>:</td>
                             <td  class="p-2">{{ $order->metode_pembayaran }}</td>
                         </tr>
-                        @if($order->metode_pembayaran == 'cod')
+                        {{-- @if($order->metode_pembayaran == 'cod')
                         <tr>
                             <td>Biaya Cod</td>
                             <td>:</td>
                             <td  class="p-2">{{ $order->biaya_cod }}</td>
                         </tr>
-                        @endif
+                        @endif --}}
                         <tr>
                             <td>Status Pesanan</td>
                             <td>:</td>
@@ -58,13 +58,13 @@
                             <td  class="p-2">Rp. {{ number_format($order->subtotal,2,',','.') }}</td>
                         </tr>
 
-                     
-                        @if($order->no_resi != null)
+
+                        {{-- @if($order->no_resi != null)
                         <tr>
                             <td>No Resi</td>
                             <td  class="p-2">{{ $order->no_resi }}</td>
                         </tr>
-                        @endif
+                        @endif --}}
                         <tr>
                             <td>No Hp</td>
                             <td>:</td>
@@ -91,7 +91,7 @@
                         </tr>
                         @endif
                         @endif
-                        @if($order->status_order_id == 3)
+                        {{-- @if($order->status_order_id == 3)
                         <tr>
                             <td>No Resi</td>
                             <td>:</td>
@@ -109,7 +109,7 @@
                             </form>
                             </td>
                         </tr>
-                        @endif
+                        @endif --}}
                     </table>
                     </div>
                     <div class="col-md-5">
