@@ -29,7 +29,7 @@
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                 <a class="navbar-brand brand-logo"><img
-                        src="{{ asset('adminassets') }}/assets/images/logo.svg" alt="logo" /></a>
+                        src="{{ asset('adminassets') }}/assets/images/tes.svg" alt="logo" width="200" height="200" /></a>
                 <a class="navbar-brand brand-logo-mini"><img
                         src="{{ asset('adminassets') }}/assets/images/logo-mini.svg" alt="logo" /></a>
             </div>

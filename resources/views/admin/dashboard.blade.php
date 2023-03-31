@@ -76,7 +76,7 @@
                                             <td>{{ $order->subtotal + $order->biaya_cod }}</td>
                                             <td>{{ $order->name }}</td>
                                             <td> <a href="{{ route('admin.transaksi.detail', ['id' => $order->id]) }}"
-                                                    class="btn btn-warning btn-sm">Detail</a></td>
+                                                    class="btn btn-primary btn-sm">Detail</a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

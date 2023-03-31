@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row mb-3">
                 <div class="col-md-12">
-                    <h2 class="btn btn-warning text-white">Belum Dibayar</h2>
+                    <h2 class="btn btn-primary text-white">Belum Dibayar</h2>
                 </div>
             </div>
             <div class="row mb-5">
@@ -56,7 +56,7 @@
             <div class="container">
                 <div class="row mb-4">
                     <div class="col-md-12">
-                        <h2 class="btn btn-warning text-white">Sedang Dalam Proses</h2>
+                        <h2 class="btn btn-primary text-white">Sedang Dalam Proses</h2>
                     </div>
                 </div>
                 <div class="row mb-5">
@@ -96,7 +96,7 @@
                     <div class="container">
                         <div class="row mb-3">
                             <div class="col-md-12">
-                                <h2 class="btn btn-warning text-white">Riwayat Pesanan Anda</h2>
+                                <h2 class="btn btn-primary text-white">Riwayat Pesanan Anda</h2>
                             </div>
                         </div>
                         <div class="row mb-5">
