@@ -158,12 +158,22 @@ class OrderController extends Controller
             $order = Order::where('invoice', $request->invoice)->first();
 
             $barang = Keranjang::where('user_id', $userid)->get();
+
+            // dd("dldd");
             //lalu masukan barang2 yang dibeli ke table detail order
             foreach ($barang as $brg) {
+
+
+
+            //    $x =  DB::table('orders')->decrement('qty',$request->qty);
+
+
+            //    dd($x);
+
                 Detailorder::create([
                     'order_id' => $order->id,
                     'product_id' => $brg->products_id,
-                    'qty' => $brg->qty,
+                    'qty' => $brg->qty ,
                 ]);
             }
             //lalu hapus data produk pada keranjang pembeli

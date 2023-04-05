@@ -30,10 +30,17 @@ class KeranjangController extends Controller
 
     public function simpan(Request $request)
     {
+
+
+       $x  =  DB::table('products')->decrement('stok',$request->qty);
+
+
+
+
         Keranjang::create([
             'user_id' => $request->user_id,
             'products_id' => $request->products_id,
-            'qty' => $request->qty
+            'qty' => $x
         ]);
 
         return redirect()->route('user.keranjang');
