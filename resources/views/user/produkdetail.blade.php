@@ -46,7 +46,25 @@
                             </div>
 
                     </div>
-                    <p><button type="submit" class="buy-now btn btn-sm btn-primary">Add To Cart</button></p>
+
+                    <p>
+                        @if($produk->stok == 0)
+
+
+
+                        <button type="submit" class="buy-now btn btn-sm btn-primary" disabled="disabled">Add To Cart</button>
+
+
+
+                        @else
+
+
+
+                        <button type="submit"  class="buy-now btn btn-sm btn-primary ">Add To Cart</button>
+
+
+                        @endif
+                    </p>
                     </form>
                 </div>
             </div>
